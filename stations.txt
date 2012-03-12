@@ -1,0 +1,141 @@
+StationID	StationName
+31302	Wisconsin Ave & Macomb St NW
+31019	Wilson Blvd & N Edgewood St
+31020	Wilson Blvd & Franklin Rd
+31301	Ward Circle / American University
+31300	Van Ness Metro / UDC
+31217	USDA / 12th & Independence Ave SW
+31220	US Dept of State / Virginia Ave & 21st St NW
+31241	Thomas Circle
+31303	Tenleytown / Wisconsin Ave & Albemarle St NW
+31006	S Joyce & Army Navy Dr
+31010	S Glebe & Potomac Ave
+31015	Rosslyn Metro / Wilson Blvd & Ft Myer Dr
+31702	Randle Circle & Minnesota Ave NE
+31606	Potomac & Pennsylvania Ave SE
+31805	Pennsylvania & Minnesota Ave SE
+31602	Park Rd & Holmead Pl NW
+31624	North Capitol St & F St NW
+31222	New York Ave & 15th St NW
+31704	Nannie Helen Burroughs & Minnesota Ave NE
+31018	N Rhodes & 16th St N
+31022	N Highland St & Wilson Blvd
+31021	N Fillmore St & Clarendon Blvd
+31703	Minnesota Ave Metro/DOES
+31230	Metro Center / 12th & G St NW
+31216	McPherson Square - 14th & H St NW
+31200	Massachusetts Ave & Dupont Circle NW
+31246	M St & Pennsylvania Ave NW
+31208	M St & New Jersey Ave SE
+31014	Lynn & 19th St North
+31619	Lincoln Park / 13th & East Capitol St NE 
+31218	L'Enfant Plaza / 7th & C St SW
+31107	Lamont & Mt Pleasant NW
+31211	Kennedy Center
+31502	John McCormack Dr & Michigan Ave NE
+31112	Harvard St & Adams Mill Rd NW
+31802	Good Hope Rd & MLK Ave SE
+31700	Good Hope & Naylor Rd SE
+31207	Georgia Ave and Fairmont St NW
+31400	Georgia & New Hampshire Ave NW
+31215	Georgetown Harbor / 30th St NW
+31503	Florida Ave & R St NW
+31706	Fairfax Village
+31505	Eckington Pl & Q St NE
+31613	Eastern Market Metro / Pennsylvania Ave & 7th St SE
+31610	Eastern Market / 7th & North Carolina Ave SE
+31017	Court House Metro / Wilson Blvd & N Uhle St
+31223	Convention Center / 7th & M St NW
+31305	Connecticut Ave & Newark St NW / Cleveland Park
+31806	Congress Heights Metro
+31623	Columbus Circle / Union Station
+31115	Columbia Rd & Georgia Ave NW
+31113	Columbia Rd & Belmont St NW
+31016	Clarendon Blvd & Pierce St
+31106	Calvert St & Woodley Pl NW
+31116	California St & Florida Ave NW
+31225	C & O Canal & Wisconsin Ave NW
+31701	Branch & Pennsylvania Ave SE
+31617	Bladensburg Rd & Benning Rd NE
+31707	Benning Rd & East Capitol St NE / Benning Rd Metro
+31705	Benning Branch Library
+31801	Anacostia Metro
+31804	Anacostia Library
+31708	Anacostia Ave & Benning Rd NE / River Terrace 
+31104	Adams Mill & Columbia Rd NW
+31404	9th & Upshur St NW
+31228	8th & H St NW
+31608	8th & Eye St SE / Barracks Row
+31609	7th & Water St SW / SW Waterfront
+31109	7th & T St NW
+31245	7th & R St NW / Shaw Library
+31232	7th & F St NW / National Portrait Gallery
+31615	6th & H St NE
+31600	5th St & K St NW
+31620	5th & F St NW
+31604	4th St & Massachusetts Ave NW
+31108	4th & M St SW
+31618	4th & East Capitol St NE
+31244	4th & E St SW
+31621	4th & D St NW / Judiciary Square
+31500	4th & Adams St NE
+31616	3rd & H St NE
+31625	3rd & G St SE
+31605	3rd & D St SE
+31236	37th & O St NW / Georgetown University
+31304	36th & Calvert St NW / Glover Park
+31226	34th St & Wisconsin Ave NW
+31307	3000 Connecticut Ave NW / National Zoo
+31009	27th & Crystal Dr
+31012	26th & Crystal Dr
+31237	25th St & Pennsylvania Ave NW
+31013	23rd & Eads
+31011	23rd & Crystal Dr
+31212	21st & M St NW
+31205	21st & I St NW
+31110	20th St & Florida Ave NW
+31204	20th & E St NW
+31002	20th & Crystal Dr
+31000	20th & Bell St
+31506	1st & Rhode Island Ave NW
+31209	1st & N ST SE
+31603	1st & M St NE
+31100	19th St & Pennsylvania Ave NW
+31235	19th St & Constitution Ave NW
+31224	19th & L St NW
+31601	19th & East Capitol St SE
+31206	19th & E Street NW
+31242	18th St & Pennsylvania Ave NW
+31221	18th & M St NW
+31004	18th & Hayes St
+31007	18th & Bell St
+31239	17th & Rhode Island Ave NW
+31213	17th & K St NW [formerly 17th & L St NW]
+31233	17th & K St NW / Farragut Square
+31214	17th & Corcoran St NW
+31229	16th & U St NW
+31103	16th & Harvard St NW
+31626	15th St & Massachusetts Ave SE
+31201	15th & P St NW
+31005	15th & Hayes St
+31003	15th & Crystal Dr
+31402	14th St Heights / 14th & Crittenden St NW
+31401	14th St & Spring Rd NW
+31101	14th & V St NW
+31203	14th & Rhode Island Ave NW
+31202	14th & R St NW
+31105	14th & Harvard St NW
+31238	14th & G St NW
+31607	14th & D St SE
+31231	14th & D St NW / Ronald Reagan Building
+31227	13th St & New York Ave NW
+31611	13th & H St NE
+31622	13th & D St NE
+31501	12th & Newton St NE
+31001	12th & Hayes St
+31008	12th & Army Navy Dr
+31102	11th & Kenyon St NW
+31614	11th & H St NE
+31219	10th St & Constitution Ave NW
+31111	10th & U St NW
+31504	10th & Monroe St NE

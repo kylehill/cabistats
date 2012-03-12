@@ -1,0 +1,9 @@
+{
+  "name" : "cabi-stats",
+  "version" : "0.0.1",
+  "author" : "Kyle Hill <kylehill@gmail.com>",
+  "description" : "Views Capital Bikeshare trip history as a scoreboard",
+  "dependencies" : [
+    
+  ]
+}
