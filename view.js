@@ -51,8 +51,10 @@ app.get('/from/:f/to/:t', function(req, res){
     },
     getTrips : function(callback) {
       client.zrange('from:' + f + ':to:' + t, 0, -1, 'withscores', function(err, results){
-        var tripData = tripDataToArray(results);
-        appendTrip(tripData, 0, function() { callback(null, tripData); })
+        var td = tripDataToArray(results);
+        async.forEach(td, addTrip, function(err){
+          callback(null, td);
+        });
       });
     },
     sendResponse : [ 'getFromName', 'getToName', 'getTrips', function(callback, results) {
@@ -68,15 +70,10 @@ app.get('/trip/:id', function(req, res) {
   });
 });
 
-var appendTrip = function(data, i, cb) {
-  client.hgetall("trip:" + data[i].id, function(err, results){
-    data[i]["trip"] = results;
-    if (i < data.length - 1) {
-      appendTrip(data, i+1, cb);    
-    }
-    else {
-      cb();
-    }
+var addTrip = function(item, callback) {
+  client.hgetall("trip:" + item.id, function(err, results) {
+    item.trip = results;
+    callback();
   });
 }
 
