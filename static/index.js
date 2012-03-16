@@ -19,6 +19,70 @@ $('document').ready(function() {
 
 var getTripData = function(){
   $.getJSON('/method/from/' + $("#fromDDL").val() + '/to/' + $("#toDDL").val(), function(data) {
-    console.log(data);
+    if (data.tripCount > 0) {
+      $("#scores").empty();
+      var table = document.createElement("table");
+      _.times((Math.min(5, data.qualCount)), function(i){
+        var tr = document.createElement("tr");
+
+        _.times(3, function(i){
+          $(tr).append(document.createElement("td"));
+        });
+
+        $(tr).children().each(function(j, element){
+          switch(j) {
+            case 0: $(element).text(i+1); break;
+            case 1: $(element).text(convertToReadableTime(data.filtered[i].trip.seconds)); break;
+            default: $(element).text(data.filtered[i].trip.end); break;
+          }
+        });
+        
+        $(table).append(tr);
+      });
+      $("#scores").append(table);
+    }
   });
+}
+
+var convertToReadableTime = function(seconds){
+  var d = 0, h = 0, m = 0, s, val = "";
+  while (seconds >= 86400) {
+    seconds -= 86400;
+    d++;
+  }
+  while (seconds >= 3600) {
+    seconds -= 3600;
+    h++;
+  }
+  while (seconds >= 60) {
+    seconds -= 60;
+    m++;
+  }
+  s = seconds;
+  
+  if (d > 0) {
+    val += d + "d ";
+    val += h + "h ";
+    val += m + "m ";
+    val += s + "s";
+    return val;
+  }
+  else {
+    if (h > 0) {
+      val += h + "h ";
+      val += m + "m ";
+      val += s + "s";
+      return val;
+    }
+    else {
+      if (m > 0) {
+        val += m + "m ";
+        val += s + "s";
+        return val;
+      }
+      else {
+        return s + "s";
+      }
+    }
+  }
 }
