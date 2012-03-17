@@ -94,9 +94,12 @@ app.listen(3001);
 
 var getMedian = function(array) {
   if (array.length <= 1) { 
-    return array[0];
+    return parseInt(array[0]);
   }
-  return ((parseInt(array[Math.floor(array.length / 2) - 1]) + parseInt(array[Math.ceil(array.length / 2) - 1])) / 2);
+  if (array.length % 2 == 1) {
+    return parseInt(array[Math.floor(array.length / 2)]);
+  }
+  return (parseInt(array[Math.floor(array.length / 2) - 1]) + parseInt(array[Math.floor(array.length / 2)])) / 2
 }
 
 var addTrip = function(item, callback) {

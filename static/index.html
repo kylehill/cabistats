@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Sample Page</title>
+    <title>Bikeshare Scoreboard</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="underscore-min.js"></script>
     <script src="index.js"></script>
@@ -16,6 +16,33 @@
       <div id="scores">
       </div>
       <div id="stats">
+        <table>
+          <tr>
+            <th></th>
+            <th class="qual">Qualified</th>
+            <th>All</th>
+          </tr>
+          <tr>
+            <th>Trips Made</th>
+            <td id="qualCount" class="qual">--</td>
+            <td id="tripCount">--</td>
+          </tr>
+          <tr>
+            <th>Average Time</th>
+            <td id="qualAverage" class="qual">--</td>
+            <td id="tripAverage">--</td>
+          </tr>
+          <tr>
+            <th>Median Time</th>
+            <td id="qualMedian" class="qual">--</td>
+            <td id="tripMedian">--</td>
+          </tr>
+          <tr>
+            <th>% Members</th>
+            <td id="qualMemberRate" class="qual">--</td>
+            <td id="tripMemberRate">--</td>
+          </tr>
+        </table>
       </div>
     </div>
     <div id="map">
