@@ -29,21 +29,21 @@ app.get('/method/stationlist', function(req, res){
 });
 
 app.get('/method/from/:f/to/:t', function(req, res){
-  var f = req.params.f;
-  var t = req.params.t;
+  var from = req.params.f;
+  var to = req.params.t;
   async.auto({
     getFromName : function(callback) {
-      client.get('station:id:' + f, function(err, res){
+      client.get('station:id:' + from, function(err, res){
         callback(null, res);
       });
     },
     getToName : function(callback) {
-      client.get('station:id:' + t, function(err, res){
+      client.get('station:id:' + to, function(err, res){
         callback(null, res);
       });
     },
     getTrips : function(callback) {
-      client.zrange('from:' + f + ':to:' + t, 0, -1, 'withscores', function(err, results){
+      client.zrange('from:' + from + ':to:' + to, 0, -1, 'withscores', function(err, results){
         var td = tripDataToArray(results);
         async.forEach(td, addTrip, function(err){
           callback(null, td);
@@ -53,7 +53,9 @@ app.get('/method/from/:f/to/:t', function(req, res){
     sendResponse : [ 'getFromName', 'getToName', 'getTrips', function(callback, results) {
       var obj = {}, t = results.getTrips;
       obj.from = results.getFromName;
+      obj.from_id = from;
       obj.to = results.getToName;
+      obj.to_id = to;
       obj.tripCount = t.length;
       
       if (t.length > 0) {
@@ -62,8 +64,9 @@ app.get('/method/from/:f/to/:t', function(req, res){
         obj.tripMedian = getMedian(underscore.pluck(underscore.pluck(t, 'trip'), 'seconds'));
         obj.tripMemberRate = underscore.reduce(t, function(sum, trip) { return sum + (trip.trip.memberType == '1\r' ? 1 : 0); }, 0) / obj.tripCount;
       
-        var limit = parseInt(t[0].trip.seconds) * 5;
-        obj.filtered = underscore.filter(t, function(trip) { return trip.trip.seconds < limit; });
+        obj.limit = parseInt(t[0].trip.seconds) * 5;
+        obj.min = parseInt(t[0].trip.seconds);
+        obj.filtered = underscore.filter(t, function(trip) { return trip.trip.seconds < obj.limit; });
       
         obj.qualCount = obj.filtered.length;
         obj.qualAverage = Math.round(underscore.reduce(obj.filtered, function(sum, trip) { return sum + parseInt(trip.trip.seconds); }, 0) / obj.qualCount);

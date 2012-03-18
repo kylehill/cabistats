@@ -1,14 +1,19 @@
 <html>
   <head>
     <title>Bikeshare Scoreboard</title>
+    <link rel="stylesheet" href="index.css"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="bootstrap-typeahead.js"></script>
+    <script src="flotr2.min.js"></script>
     <script src="underscore-min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
     <div id="selectors">
       <select id="fromDDL"></select>
+      <input type="text" id="from_input" />
       <select id="toDDL"></select>
+      <input type="text" id="to_input" />
     </div>
     <div id="panel">
       <div id="graph">
@@ -42,10 +47,27 @@
             <td id="qualMemberRate" class="qual">--</td>
             <td id="tripMemberRate">--</td>
           </tr>
+          <tr>
+            <th>Trips/Day</th>
+            <td id="qualPerDay" class="qual">--</td>
+            <td id="tripPerDay">--</td>
+          </tr>
         </table>
       </div>
     </div>
     <div id="map">
+    </div>
+    <div id="info">
+      <div id="from_stn">
+        <img class="tinymap" />
+        <h2 class="dd"></h2>
+        Install Date: <span id="from_install" class="dd"></span>
+      </div>
+      <div id="to_stn">
+        <img class="tinymap" />
+        <h2 class="dd"></h2>
+        Install Date: <span id="to_install" class="dd"></span>
+      </div>
     </div>
   </body>
 </html>
