@@ -12,12 +12,30 @@ $('document').ready(function() {
     });
     
     $("#fromDDL, #toDDL").on("change", changeDropdowns)
-    $("#fromDDL").val(_.shuffle(stations)[0].terminalName);
-    $("#toDDL").val(_.shuffle(stations)[0].terminalName);
-    $("#fromDDL").change();
+    shuffle();
   });
+  
+  $("#link_random").on("click", shuffle);
+  $("#link_reverse").on("click", reverse);
+  $("#link_info").on("click", showInfo);
 });
 
+var shuffle = function(){
+  $("#fromDDL").val(_.shuffle(stations)[0].terminalName);
+  $("#toDDL").val(_.shuffle(stations)[0].terminalName);
+  $("#fromDDL").change();
+}
+
+var reverse = function(){
+  var from_id = $("#fromDDL").val();
+  $("#fromDDL").val($("#toDDL").val());
+  $("#toDDL").val(from_id);
+  $("#fromDDL").change();
+}
+
+var showInfo = function(){
+  $("#showInfo").toggle();
+}
 var changeDropdowns = function(){
   getTripData($("#fromDDL").val(), $("#toDDL").val());
 }

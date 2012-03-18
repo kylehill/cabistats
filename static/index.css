@@ -27,6 +27,21 @@
   margin-left:50px;
 }
 
+#showInfo {
+  font-size:2.5em;
+  color:#555;
+  text-align:left;
+  font-family:Helvetica, Arial;
+  padding-top:8%;
+  padding-bottom:10%;
+  margin-left:50px;
+}
+
+#showInfo a {
+  color:orange;
+  text-decoration:none;
+}
+
 #scores tr:nth-child(1) {
   background-color:gold;
 }
@@ -35,6 +50,22 @@
 }
 #scores tr:nth-child(3) {
   background-color:#C96;
+}
+
+#runner {
+  width:100%;
+  text-align:center;
+  font-family:Helvetica, Arial;
+  padding-top:10px;
+  padding-bottom:10px;
+  background-color:#CCC;
+}
+
+#runner a {
+  text-decoration:none;
+  color:#D14;
+  margin-right:10px;
+  margin-left:10px;
 }
 
 table {
