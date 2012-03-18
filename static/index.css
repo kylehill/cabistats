@@ -1,4 +1,108 @@
+#panel {
+  text-align:center;
+  width:100%;
+  margin-top:50px;
+}
 #graph {
   width:675px;
   height:500px;
+  font-family:Helvetica, Arial;
+  font-size:0.9em;
+  font-weight:bold;
+  display:inline-block;
+}
+
+#noData {
+  font-size:4em;
+  color:#555;
+  text-align:center;
+  width:100%;
+  font-family:Helvetica, Arial;
+  padding-top:20%;
+}
+
+#info {
+  display:inline-block;
+  height:500px;
+  margin-left:50px;
+}
+
+#scores tr:nth-child(1) {
+  background-color:gold;
+}
+#scores tr:nth-child(2) {
+  background-color:silver;
+}
+#scores tr:nth-child(3) {
+  background-color:#C96;
+}
+
+table {
+  border-spacing:none;
+  font-family:Helvetica, Arial;
+  border-collapse:collapse;
+  margin-bottom:25px;
+  width:400px;
+}
+
+tr {
+  border-bottom:solid 1px black;
+}
+
+td {
+  text-align:center;
+  font-weight:bold;
+  padding:6px;
+  border:solid 1px black;
+}
+
+th {
+  text-align:right;
+  font-weight:normal;
+  padding:6px;
+  border:solid 1px black;
+}
+
+.qual {
+  color:green;
+}
+
+body {
+  padding:0px;
+  margin:0px;
+}
+
+#selectors {
+  background-color: #222;
+  color:white;
+  font-family:Helvetica, Arial;
+  text-align:center;
+  padding:0px;
+  margin:0px;
+}
+
+#selectors select {
+  color:white;
+  background-color:black;
+  font-size:1.1em;
+  width:400px;
+  font-family:Helvetica, Arial;
+  margin-bottom:5px;
+}
+
+#selectors .dd {
+  font-weight:bold;
+  font-family:Helvetica, Arial;
+}
+
+#selectors .station {
+  display:inline-block;
+  margin-bottom:20px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+#selectors .tinymap {
+  display:inline-block;
+  vertical-align:bottom;
 }

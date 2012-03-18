@@ -16,8 +16,6 @@ $('document').ready(function() {
     $("#toDDL").val(_.shuffle(stations)[0].terminalName);
     $("#fromDDL").change();
   });
-  
-  $("from_input, to_input").typeahead();
 });
 
 var changeDropdowns = function(){
@@ -28,14 +26,23 @@ var getTripData = function(from_id, to_id){
   $.getJSON('/method/from/' + from_id + '/to/' + to_id, function(data) {
     console.log(data);
     cachedData = data;
-    // High scores table
-    renderScores(data);
-    // Statistics table
-    renderStats(data);
+    
     // Station info
     renderInfo(data);
-    // Graph it up
-    renderGraphs(data);
+    
+    if (data.tripCount > 0) {
+      $("#panel").show(); $("#noData").hide();
+      
+      // High scores table
+      renderScores(data);
+      // Statistics table
+      renderStats(data);
+      // Graph it up
+      renderGraphs(data);
+    }
+    else {
+      $("#panel").hide(); $("#noData").show();
+    }
   });
 }
 
@@ -111,7 +118,7 @@ var renderScores = function(data) {
 
     $(tr).children().each(function(j, element){
       switch(j) {
-        case 0: $(element).text(i+1); break;
+        case 0: $(element).text(getOrdinal(i+1)); break;
         case 1: $(element).text(convertToReadableTime(data.filtered[i].trip.seconds)); break;
         default: $(element).text(data.filtered[i].trip.start); break;
       }
@@ -143,19 +150,41 @@ var renderStats = function(data) {
     
     $("#qualPerDay").text(roundTwoDec(data.qualCount / daysOnline));
     $("#tripPerDay").text(roundTwoDec(data.tripCount / daysOnline));
+    
+    $("#distance").text(data.filtered[0].trip.distance + " mi");
+    $("#elevation").text(data.filtered[0].trip.elevation + " ft");
+    $("#grade").text(convertToPct(parseInt(data.filtered[0].trip.elevation) / (parseInt(data.filtered[0].trip.distance) * 5260)) + "%");
   }
 }
 
 var renderInfo = function(data) {
   var fromStation = _.find(stations, function(s) { return s.terminalName === data.from_id});
   var toStation = _.find(stations, function(s) { return s.terminalName === data.to_id});
-  $("#info .dd").empty();
-  $("#from_stn .tinymap").attr("src", getTinymapSrc(fromStation.lat, fromStation.long, "green"));
-  $("#from_stn h2").text(fromStation.name);
-  $("#from_install").text(new Date(parseInt(fromStation.installDate)).toDateString());
-  $("#to_stn .tinymap").attr("src", getTinymapSrc(toStation.lat, toStation.long, "red"));
-  $("#to_stn h2").text(toStation.name)
-  $("#to_install").text(new Date(parseInt(toStation.installDate)).toDateString());
+  $(".dd").empty();
+  $("#from_map").attr("src", getTinymapSrc(fromStation.lat, fromStation.long, "green"));
+  $("#from_install").text(new Date(parseInt(fromStation.installDate)).toDateString()).css("color", getStationColor(new Date(parseInt(fromStation.installDate))));
+  $("#from_bikes").text(fromStation.nbBikes).css("color", getCountColor(fromStation.nbBikes));
+  $("#from_docks").text(fromStation.nbEmptyDocks).css("color", getCountColor(fromStation.nbEmptyDocks));
+  $("#to_map").attr("src", getTinymapSrc(toStation.lat, toStation.long, "red"));
+  $("#to_install").text(new Date(parseInt(toStation.installDate)).toDateString()).css("color"), getStationColor(new Date(parseInt(toStation.installDate)));
+  $("#to_bikes").text(toStation.nbBikes).css("color", getCountColor(toStation.nbBikes));
+  $("#to_docks").text(toStation.nbEmptyDocks).css("color", getCountColor(toStation.nbEmptyDocks));
+}
+
+var getStationColor = function(date) {
+  if (date.valueOf() > new Date(2012, 0, 1).valueOf()) {
+    return "#FFA7A5";
+  }
+  if (date.valueOf() > new Date(2011, 11, 1).valueOf()) {
+    return "#FFFFAA";
+  }
+  return "white";
+}
+
+var getCountColor = function(num) {
+  if (num == 0) { return "#FFA7A5"; }
+  if (num < 4) { return "#FFFFAA"; }
+  return "white";
 }
 
 var getTinymapSrc = function(lat, long, color) {
@@ -190,24 +219,24 @@ var convertToReadableTime = function(seconds){
     val += d + "d ";
     val += h + "h ";
     val += m + "m ";
-    val += s + "s";
+    val += s + "s ";
     return val;
   }
   else {
     if (h > 0) {
       val += h + "h ";
       val += m + "m ";
-      val += s + "s";
+      val += s + "s ";
       return val;
     }
     else {
       if (m > 0) {
         val += m + "m ";
-        val += s + "s";
+        val += s + "s ";
         return val;
       }
       else {
-        return s + "s";
+        return s + "s ";
       }
     }
   }

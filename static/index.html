@@ -2,72 +2,87 @@
   <head>
     <title>Bikeshare Scoreboard</title>
     <link rel="stylesheet" href="index.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="bootstrap-typeahead.js"></script>
     <script src="flotr2.min.js"></script>
     <script src="underscore-min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
     <div id="selectors">
-      <select id="fromDDL"></select>
-      <input type="text" id="from_input" />
-      <select id="toDDL"></select>
-      <input type="text" id="to_input" />
+      <img id="from_map" class="tinymap" />
+      <div id="from_stn" class="station">
+        <select id="fromDDL"></select><br/>
+        Install Date: <span id="from_install" class="dd"></span><br/>
+        Bikes: <span id="from_bikes" class="dd"></span> / Docks: <span id="from_docks" class="dd">
+      </div>
+      <div id="to_stn" class="station">
+        <select id="toDDL"></select><br/>
+        Install Date: <span id="to_install" class="dd"></span><br/>
+        Bikes: <span id="to_bikes" class="dd"></span> / Docks: <span id="to_docks" class="dd">
+      </div>
+      <img id="to_map" class="tinymap" />
     </div>
-    <div id="panel">
+    <div id="noData" style="display:none;">
+      There is no data for this station pair.
+    </div>
+    <div id="panel" style="display:none;">
       <div id="graph">
       </div>
-      <div id="scores">
+      <div id="info">
+        <div id="profile">
+          <table>
+            <tr>
+              <th style="text-align:center;" >Distance</th>
+              <th style="text-align:center;" >Net Elevation</th>
+              <th style="text-align:center;" >Grade</th>
+            </tr>
+            <tr>
+              <td id="distance"></td>
+              <td id="elevation"></td>
+              <td id="grade"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="stats">
+          <table>
+            <tr>
+              <th style="border-top:white; border-left:white;"></th>
+              <th style="text-align:center;" class="qual">Qualified</th>
+              <th style="text-align:center;">All</th>
+            </tr>
+            <tr>
+              <th>Trips Made</th>
+              <td id="qualCount" class="qual">--</td>
+              <td id="tripCount">--</td>
+            </tr>
+            <tr>
+              <th>Average Time</th>
+              <td id="qualAverage" class="qual">--</td>
+              <td id="tripAverage">--</td>
+            </tr>
+            <tr>
+              <th>Median Time</th>
+              <td id="qualMedian" class="qual">--</td>
+              <td id="tripMedian">--</td>
+            </tr>
+            <tr>
+              <th>% Members</th>
+              <td id="qualMemberRate" class="qual">--</td>
+              <td id="tripMemberRate">--</td>
+            </tr>
+            <tr>
+              <th>Trips/Day</th>
+              <td id="qualPerDay" class="qual">--</td>
+              <td id="tripPerDay">--</td>
+            </tr>
+          </table>
+        </div>
+        <div id="scores">
+        </div>
       </div>
-      <div id="stats">
-        <table>
-          <tr>
-            <th></th>
-            <th class="qual">Qualified</th>
-            <th>All</th>
-          </tr>
-          <tr>
-            <th>Trips Made</th>
-            <td id="qualCount" class="qual">--</td>
-            <td id="tripCount">--</td>
-          </tr>
-          <tr>
-            <th>Average Time</th>
-            <td id="qualAverage" class="qual">--</td>
-            <td id="tripAverage">--</td>
-          </tr>
-          <tr>
-            <th>Median Time</th>
-            <td id="qualMedian" class="qual">--</td>
-            <td id="tripMedian">--</td>
-          </tr>
-          <tr>
-            <th>% Members</th>
-            <td id="qualMemberRate" class="qual">--</td>
-            <td id="tripMemberRate">--</td>
-          </tr>
-          <tr>
-            <th>Trips/Day</th>
-            <td id="qualPerDay" class="qual">--</td>
-            <td id="tripPerDay">--</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div id="map">
-    </div>
-    <div id="info">
-      <div id="from_stn">
-        <img class="tinymap" />
-        <h2 class="dd"></h2>
-        Install Date: <span id="from_install" class="dd"></span>
-      </div>
-      <div id="to_stn">
-        <img class="tinymap" />
-        <h2 class="dd"></h2>
-        Install Date: <span id="to_install" class="dd"></span>
-      </div>
+      
+      
     </div>
   </body>
 </html>
