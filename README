@@ -1,0 +1,4 @@
+So, Redis is expensive (in terms of memory and deploying on Heroku). You can build it yourself!
+
+Here's a link to the data set (warning, 87MB .csv)
+http://kylehill.net/flat.csv
