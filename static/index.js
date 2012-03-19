@@ -185,7 +185,7 @@ var renderInfo = function(data) {
   $("#from_bikes").text(fromStation.nbBikes).css("color", getCountColor(fromStation.nbBikes));
   $("#from_docks").text(fromStation.nbEmptyDocks).css("color", getCountColor(fromStation.nbEmptyDocks));
   $("#to_map").attr("src", getTinymapSrc(toStation.lat, toStation.long, "red"));
-  $("#to_install").text(new Date(parseInt(toStation.installDate)).toDateString()).css("color"), getStationColor(new Date(parseInt(toStation.installDate)));
+  $("#to_install").text(new Date(parseInt(toStation.installDate)).toDateString()).css("color", getStationColor(new Date(parseInt(toStation.installDate))));
   $("#to_bikes").text(toStation.nbBikes).css("color", getCountColor(toStation.nbBikes));
   $("#to_docks").text(toStation.nbEmptyDocks).css("color", getCountColor(toStation.nbEmptyDocks));
 }
