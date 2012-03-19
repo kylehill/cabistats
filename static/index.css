@@ -40,6 +40,7 @@
 #showInfo a {
   color:orange;
   text-decoration:none;
+  font-weight:bold;
 }
 
 #scores tr:nth-child(1) {
@@ -66,6 +67,7 @@
   color:#D14;
   margin-right:10px;
   margin-left:10px;
+  font-size:1.2em;
 }
 
 table {
