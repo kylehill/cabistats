@@ -4,11 +4,12 @@
   "author" : "Kyle Hill <kylehill@gmail.com>",
   "description" : "Views Capital Bikeshare trip history as a scoreboard",
   "dependencies" : {
-    "async" : '0.1.17',  // control flow
-    "express" : '2.5.7', // web server
-    "lazy": '1.0.8', // reading data file
-    "redis" : '0.7.1',  // database driver
-    "xml2json" : '0.2.4',  // current data
-    "underscore" : '1.3.1' // toolbox
+    "async" : "0.1.17",  
+    "express" : "2.5.7",
+    "lazy": "1.0.8", 
+    "redis" : "0.7.1",
+    "request" : "2.9.153", 
+    "xml2json" : "0.2.4",  
+    "underscore" : "1.3.1"
   }
 }
