@@ -171,7 +171,7 @@ var renderStats = function(data) {
     
     $("#distance").text(data.filtered[0].trip.distance + " mi");
     $("#elevation").text(data.filtered[0].trip.elevation + " ft");
-    $("#grade").text(convertToPct(parseInt(data.filtered[0].trip.elevation) / (parseInt(data.filtered[0].trip.distance) * 5260)) + "%");
+    $("#grade").text(convertToPct(parseFloat(data.filtered[0].trip.elevation) / (parseFloat(data.filtered[0].trip.distance) * 5260)) + "%");
   }
 }
 
