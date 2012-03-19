@@ -178,6 +178,7 @@ var renderStats = function(data) {
 var renderInfo = function(data) {
   var fromStation = _.find(stations, function(s) { return s.terminalName === data.from_id});
   var toStation = _.find(stations, function(s) { return s.terminalName === data.to_id});
+  $("#link_map").attr("href", "http://maps.google.com/maps?saddr=" + getGoogleMapSrc(fromStation) + "&daddr=" + getGoogleMapSrc(toStation) + "&lci=bike&dirflg=b&t=m");
   $(".dd").empty();
   $("#from_map").attr("src", getTinymapSrc(fromStation.lat, fromStation.long, "green"));
   $("#from_install").text(new Date(parseInt(fromStation.installDate)).toDateString()).css("color", getStationColor(new Date(parseInt(fromStation.installDate))));
@@ -187,6 +188,10 @@ var renderInfo = function(data) {
   $("#to_install").text(new Date(parseInt(toStation.installDate)).toDateString()).css("color"), getStationColor(new Date(parseInt(toStation.installDate)));
   $("#to_bikes").text(toStation.nbBikes).css("color", getCountColor(toStation.nbBikes));
   $("#to_docks").text(toStation.nbEmptyDocks).css("color", getCountColor(toStation.nbEmptyDocks));
+}
+
+var getGoogleMapSrc = function(station){
+  return station.lat + "," + station.long;
 }
 
 var getStationColor = function(date) {
