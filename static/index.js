@@ -162,7 +162,9 @@ var renderStats = function(data) {
     $("#qualAverage").text(convertToReadableTime(data.qualAverage));
     $("#tripAverage").text(convertToReadableTime(data.tripAverage));
     $("#qualMedian").text(convertToReadableTime(data.qualMedian));
+    $("#qualStdDev").text(convertToReadableTime(data.qualStdDev));
     $("#tripMedian").text(convertToReadableTime(data.tripMedian));
+    $("#tripStdDev").text(convertToReadableTime(data.tripStdDev));
     $("#qualMemberRate").text(convertToPct(data.qualMemberRate));
     $("#tripMemberRate").text(convertToPct(data.tripMemberRate));
     
