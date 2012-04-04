@@ -72,7 +72,8 @@ app.get('/', function(req, res){
 app.get('/*', function(req, res){
   res.sendfile('static/' + req.params);
 });
-app.listen(3001);
+var port = process.env.PORT || 3000;
+app.listen(port);
 
 var getMedian = function(array) {
   if (array.length <= 1) { 
