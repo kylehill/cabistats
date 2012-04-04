@@ -90,7 +90,7 @@ var renderGraphs = function(data) {
 
 var trackData = function(point) {
   var tripData = cachedData.filtered[point.index];
-  return tripData.trip.start + "<br/><strong>" + convertToReadableTime(parseInt(tripData.trip.seconds)) + "</strong> (" + getOrdinal(tripData.place) + ")"
+  return new Date(tripData.start).toDateString() + "<br/><strong>" + convertToReadableTime(parseInt(tripData['length'])) + "</strong> (" + getOrdinal(point.index + 1) + ")"
 }
 
 var getOrdinal = function(place) {
@@ -114,14 +114,15 @@ var transmuteData = function(data) {
   var obj = {};
   obj.points = {show : true};
   obj.data = _.map(data.filtered, function(t){ 
-    return [parseInt(t.trip.seconds), getTimeOfDay(t)]; 
+    return [parseInt(t['length']), getTimeOfDay(t)]; 
   });
+  console.log(obj);
   return obj;
 }
 
 var getTimeOfDay = function(data) {
-  var time = data.trip.startTime;
-  return (parseInt(time.split(":")[0]) * 60 + parseInt(time.split(":")[1])) * -1;
+  var time = data.start;
+  return (new Date(time).getHours() * 60 + new Date(time).getMinutes()) * -1;
 }
 
 var renderScores = function(data) {
@@ -137,8 +138,8 @@ var renderScores = function(data) {
     $(tr).children().each(function(j, element){
       switch(j) {
         case 0: $(element).text(getOrdinal(i+1)); break;
-        case 1: $(element).text(convertToReadableTime(data.filtered[i].trip.seconds)); break;
-        default: $(element).text(data.filtered[i].trip.start); break;
+        case 1: $(element).text(convertToReadableTime(data.filtered[i]['length'])); break;
+        default: $(element).text(new Date(data.filtered[i].start).toDateString()); break;
       }
     });
     
@@ -151,8 +152,8 @@ var renderStats = function(data) {
   $("#stats td").text("--");
   
   var lastInstall = Math.max(
-    parseInt(_.find(stations, function(s){ return s.terminalName === data.from_id}).installDate),
-    parseInt(_.find(stations, function(s){ return s.terminalName === data.to_id}).installDate));
+    parseInt(_.find(stations, function(s){ return s.terminalName == data.from_id}).installDate),
+    parseInt(_.find(stations, function(s){ return s.terminalName == data.to_id}).installDate));
   
   var daysOnline = (new Date('1/1/2012 0:00:00').valueOf() - parseInt(lastInstall)) / (86400 * 1000);
   
@@ -169,15 +170,15 @@ var renderStats = function(data) {
     $("#qualPerDay").text(roundTwoDec(data.qualCount / daysOnline));
     $("#tripPerDay").text(roundTwoDec(data.tripCount / daysOnline));
     
-    $("#distance").text(data.filtered[0].trip.distance + " mi");
-    $("#elevation").text(data.filtered[0].trip.elevation + " ft");
-    $("#grade").text(convertToPct(parseFloat(data.filtered[0].trip.elevation) / (parseFloat(data.filtered[0].trip.distance) * 5260)) + "%");
+    $("#distance").text(data.distance + " mi");
+    $("#elevation").text(data.elevation + " ft");
+    $("#grade").text(convertToPct(data.elevation / (data.distance * 5260)) + "%");
   }
 }
 
 var renderInfo = function(data) {
-  var fromStation = _.find(stations, function(s) { return s.terminalName === data.from_id});
-  var toStation = _.find(stations, function(s) { return s.terminalName === data.to_id});
+  var fromStation = _.find(stations, function(s) { return s.terminalName == data.from_id});
+  var toStation = _.find(stations, function(s) { return s.terminalName == data.to_id});
   $("#link_map").attr("href", "http://maps.google.com/maps?saddr=" + getGoogleMapSrc(fromStation) + "&daddr=" + getGoogleMapSrc(toStation) + "&lci=bike&dirflg=b&t=m");
   $(".dd").empty();
   $("#from_map").attr("src", getTinymapSrc(fromStation.lat, fromStation.long, "green"));
