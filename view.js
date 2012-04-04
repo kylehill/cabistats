@@ -45,7 +45,9 @@ app.get('/method/from/:f/to/:t', function(req, res){
               
               // meta stats
               obj.tripAverage = Math.round(underscore.reduce(t, function(sum, trip) { return sum + trip['length']; }, 0) / obj.tripCount);
-              obj.tripMedian = getMedian(underscore.pluck(t, 'length'));
+              var tripData = underscore.pluck(t, 'length');
+              obj.tripMedian = getMedian(tripData);
+              obj.tripStdDev = calcStdDev(tripData, obj.tripAverage);
               obj.tripMemberRate = underscore.reduce(t, function(sum, trip) { return sum + (trip.type ? 1 : 0); }, 0) / obj.tripCount;
 
               obj.limit = parseInt(t[0]['length']) * 5;
@@ -54,7 +56,9 @@ app.get('/method/from/:f/to/:t', function(req, res){
 
               obj.qualCount = obj.filtered.length;
               obj.qualAverage = Math.round(underscore.reduce(obj.filtered, function(sum, trip) { return sum + trip['length']; }, 0) / obj.qualCount);
-              obj.qualMedian = getMedian(underscore.pluck(obj.filtered, 'length'));
+              var qualData = underscore.pluck(obj.filtered, 'length');
+              obj.qualMedian = getMedian(qualData);
+              obj.qualStdDev = calcStdDev(qualData, obj.qualAverage);
               obj.qualMemberRate = underscore.reduce(obj.filtered, function(sum, trip) { return sum + (trip.type ? 1 : 0); }, 0) / obj.qualCount;
             }
             connection.close();
@@ -83,6 +87,11 @@ var getMedian = function(array) {
     return parseInt(array[Math.floor(array.length / 2)]);
   }
   return (parseInt(array[Math.floor(array.length / 2) - 1]) + parseInt(array[Math.floor(array.length / 2)])) / 2
+}
+
+var calcStdDev = function(data, mean) {
+  var sqsums = underscore.map(data, function(n) { return Math.pow(n-mean,2); });
+  return Math.sqrt(underscore.reduce(sqsums, function(s, n) { return s + n; }, 0) / data.length);
 }
 
 var addTrip = function(item, callback) {
