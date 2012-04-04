@@ -29,7 +29,7 @@ app.get('/method/from/:f/to/:t', function(req, res){
   var to = parseInt(req.params.t);
   async.auto({
     getTrips : function(callback) {
-      mongodb.Db.connect('mongodb://heroku_app3673083:7900vvrtbg9lkicid1c7168l19@ds031777.mongolab.com:31777/heroku_app3673083', function(error, connection) {
+      mongodb.Db.connect(process.env.MONGOLAB_URI, function(error, connection) {
         connection.collection('ptp', function(err, collection) {
           collection.find({'from' : from, 'to' : to}).nextObject(function(err, arr) {
             var obj = {};

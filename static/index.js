@@ -90,7 +90,20 @@ var renderGraphs = function(data) {
 
 var trackData = function(point) {
   var tripData = cachedData.filtered[point.index];
-  return new Date(tripData.start).toDateString() + "<br/><strong>" + convertToReadableTime(parseInt(tripData['length'])) + "</strong> (" + getOrdinal(point.index + 1) + ")"
+  return getPrettyDate(tripData.start) + "<br/><strong>" + convertToReadableTime(parseInt(tripData['length'])) + "</strong> (" + getOrdinal(point.index + 1) + ")"
+}
+
+var getPrettyDate = function(ms) {
+  var d = new Date(ms);
+  return [d.getMonth() + 1, d.getDate(), d.getFullYear()].join("/") + " " + d.getHours() + ":" + padL(d.getMinutes(), '0', 2);
+}
+
+var padL = function(a, b, c) {
+  a = a + '';
+  while (a.length  < c) {
+    a = b + a;
+  }
+  return a;
 }
 
 var getOrdinal = function(place) {
