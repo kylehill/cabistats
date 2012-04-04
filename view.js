@@ -3,7 +3,6 @@ var async = require('async');
 var request = require('request');
 var parser = require('xml2json');
 var underscore = require('underscore');
-var jade = require('jade');
 var mongodb = require("mongodb");
 
 app.get('/method/station/:id', function(req, res){
