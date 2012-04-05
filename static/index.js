@@ -152,7 +152,7 @@ var renderScores = function(data) {
       switch(j) {
         case 0: $(element).text(getOrdinal(i+1)); break;
         case 1: $(element).text(convertToReadableTime(data.filtered[i]['length'])); break;
-        default: $(element).text(new Date(data.filtered[i].start).toDateString()); break;
+        default: $(element).text(getPrettyDate(data.filtered[i].start)); break;
       }
     });
     
