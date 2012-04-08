@@ -168,7 +168,7 @@ var renderStats = function(data) {
     parseInt(_.find(stations, function(s){ return s.terminalName == data.from_id}).installDate),
     parseInt(_.find(stations, function(s){ return s.terminalName == data.to_id}).installDate));
   
-  var daysOnline = (new Date('1/1/2012 0:00:00').valueOf() - parseInt(lastInstall)) / (86400 * 1000);
+  var daysOnline = (new Date('4/1/2012 0:00:00').valueOf() - parseInt(lastInstall)) / (86400 * 1000);
   
   if (data.tripCount > 0) {
     $("#qualCount").text(data.qualCount);
@@ -183,9 +183,7 @@ var renderStats = function(data) {
     $("#qualPerDay").text(roundTwoDec(data.qualCount / daysOnline));
     $("#tripPerDay").text(roundTwoDec(data.tripCount / daysOnline));
     
-    $("#distance").text(data.distance + " mi");
-    $("#elevation").text(data.elevation + " ft");
-    $("#grade").text(convertToPct(data.elevation / (data.distance * 5260)) + "%");
+    
   }
 }
 
@@ -209,10 +207,10 @@ var getGoogleMapSrc = function(station){
 }
 
 var getStationColor = function(date) {
-  if (date.valueOf() > new Date(2012, 0, 1).valueOf()) {
+  if (date.valueOf() > new Date(2012, 3, 1).valueOf()) {
     return "#FFA7A5";
   }
-  if (date.valueOf() > new Date(2011, 11, 1).valueOf()) {
+  if (date.valueOf() > new Date(2012, 2, 1).valueOf()) {
     return "#FFFFAA";
   }
   return "white";
