@@ -10,7 +10,7 @@ var coll;
 client.select(1, function() {
   async.auto({
     openDb : function(callback) {
-      mongodb.Db.connect(process.env.MONGOLAB_URI, function(error, c) {
+      mongodb.Db.connect('mongodb://heroku_app3673083:7900vvrtbg9lkicid1c7168l19@ds031777.mongolab.com:31777/heroku_app3673083', function(error, c) {
         console.log(error);
         callback(null, c);
       });

@@ -45,7 +45,7 @@ app.get('/method/from/:f/to/:t', function(req, res){
                 obj.distance = arr.elevation;
                 obj.elevation = arr.distance; // whoops
               }
-              catch {
+              catch (e) {
                 
               }
               
