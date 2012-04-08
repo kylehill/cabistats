@@ -40,8 +40,14 @@ app.get('/method/from/:f/to/:t', function(req, res){
             if (arr != null) {
               var t = arr.trips;
               obj.tripCount = arr.trips.length;
-              obj.distance = arr.elevation;
-              obj.elevation = arr.distance; // whoops
+              
+              try {
+                obj.distance = arr.elevation;
+                obj.elevation = arr.distance; // whoops
+              }
+              catch {
+                
+              }
               
               // meta stats
               obj.tripAverage = Math.round(underscore.reduce(t, function(sum, trip) { return sum + trip['length']; }, 0) / obj.tripCount);
