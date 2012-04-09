@@ -59,6 +59,8 @@ app.get('/method/from/:f/to/:t', function(req, res){
               obj.limit = parseInt(t[0]['length']) * 5;
               obj.min = parseInt(t[0]['length']);
               obj.filtered = underscore.filter(t, function(trip) { return trip['length'] < obj.limit; });
+              obj.unfiltered = underscore.filter(t, function(trip) { return trip['length'] >= obj.limit; });
+
 
               obj.qualCount = obj.filtered.length;
               obj.qualAverage = Math.round(underscore.reduce(obj.filtered, function(sum, trip) { return sum + trip['length']; }, 0) / obj.qualCount);

@@ -182,8 +182,6 @@ var renderStats = function(data) {
     
     $("#qualPerDay").text(roundTwoDec(data.qualCount / daysOnline));
     $("#tripPerDay").text(roundTwoDec(data.tripCount / daysOnline));
-    
-    
   }
 }
 
